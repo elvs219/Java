@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.Scanner;
+
+class Fibonacci{
+	int firstNumber;
+	int secondNumber;
+	int thirdNumber;
+	int limit;
+	Fibonacci(int n){
+		limit=n;
+		firstNumber=0;
+		secondNumber=1;
+		
+	}
+	void generateFibonacci(){
+		System.out.println(firstNumber+ " ");
+		System.out.println(secondNumber+ " ");
+
+		for(int i=0;i<limit-2;i++){
+			thirdNumber=firstNumber+secondNumber;
+			System.out.println(thirdNumber+ " ");
+			firstNumber=secondNumber;
+			secondNumber=thirdNumber;
+		}
+	}
+}
+public class FibiDemo {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter the total number of Fibonacci series:");
+		int limit = sc.nextInt();
+		Fibonacci f = new Fibonacci(limit);
+		f.generateFibonacci();
+	}
+	
+
+}
