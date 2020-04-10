@@ -1,0 +1,103 @@
+package prob_4;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
+import java.util.Scanner;
+
+public class FinalResult {
+	public static void main(String[] args) {
+	    try {
+	    	//Start of GenerateRandomNumbers
+	    	FileWriter myWriter = new FileWriter("RandomNumbers.txt");
+	    	Scanner sc=new Scanner(System.in);
+	    	
+	    	int input=sc.nextInt();
+	        Random rand = new Random(input); 
+	        int randNumber;
+	        sc.close();
+	        for(int i=0;i<100;i++) {
+	        	// Generate random integers in range 0 to 999
+	            randNumber = rand.nextInt(1000); 
+	    		
+	    		myWriter.write(+randNumber+" ");
+	          
+	        }
+	       myWriter.close();  
+	     //End of GenerateRandomNumbers
+	       
+	       //Reading from RandomNumbers.txt , checking even or odd and writing the data to respective files.
+	       File myObj = new File("RandomNumbers.txt");
+		      Scanner myReader = new Scanner(myObj);
+		      File newFile = new File("evenRandomNumbers.txt");
+		      newFile.createNewFile();
+		      File newFile1 = new File("oddRandomNumbers.txt");
+		      newFile1.createNewFile();
+		      PrintWriter writer = new PrintWriter(new FileWriter("evenRandomNumbers.txt"));
+		      PrintWriter writer1 = new PrintWriter(new FileWriter("oddRandomNumbers.txt"));
+		      while (myReader.hasNextInt()) {
+		        int data = myReader.nextInt();
+		        
+		        
+		        
+		        if(data%2==0) {
+		        	writer.print(data + " ");
+		        	 }
+		        else{
+		        	
+		        	writer1.print(data + " ");
+		        	
+		        	
+		        }
+		      }
+		      writer.close();
+		      writer1.close();
+		      myReader.close();
+	    	//Even and Odd numbers are stored to respective files
+	    	
+	    //Final output
+		  
+	      File myObj1 = new File("RandomNumbers.txt");
+	      Scanner myReader1 = new Scanner(myObj1);
+	      System.out.println("Random Numbers Generated:");
+		      while (myReader1.hasNextInt()) {
+			        int data = myReader1.nextInt();
+			        
+			        System.out.print(data + " ");
+		      }
+	    myReader1.close();
+	    
+	    File myObj3 = new File("oddRandomNumbers.txt");
+	      Scanner myReader3 = new Scanner(myObj3);
+	      System.out.println("\nOdd Numbers Generated:");
+		      while (myReader3.hasNextInt()) {
+			        int data = myReader3.nextInt();
+			       
+			        System.out.print(data + " ");
+		      }
+	    myReader3.close();
+	    
+	    File myObj2 = new File("evenRandomNumbers.txt");
+	      Scanner myReader2 = new Scanner(myObj2);
+	      System.out.println("\nEven Numbers Generated:");
+		      while (myReader2.hasNextInt()) {
+			        int data = myReader2.nextInt();
+			       
+			        System.out.print(data + " ");
+		      }
+	    myReader2.close();
+	    
+	    
+	    
+	    //end of final result
+	    
+	   }catch (IOException e) {
+		      System.out.println("An error occurred.");
+		      
+		    }
+		    
+
+     }
+}
